@@ -54,7 +54,7 @@ export const UserSlice = createSlice({
         builder.addCase(loginUser.fulfilled, (state, action) => {
             state.user = action.payload;
             state.error = false;
-            state.loading = true;
+            state.loading = false;
                 });
     }
 })
