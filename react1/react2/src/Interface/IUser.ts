@@ -2,9 +2,11 @@ import { IReim } from "./IReim";
 
 
 export interface IUser {
-    userId: number,
+    userId?: number,
     firstName: string,
     lastName: string,
+    username: string,
     email:string,
-    privilege: boolean,
+    password:string,
+    privilege?: boolean
 }

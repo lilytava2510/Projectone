@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import "./LoginForm.css";
+import { useDispatch } from 'react-redux';
+import { toggleError } from '../../Slices/UserSlice';
 
 
 export const Login: React.FC = () => {
 
-    const [email,setEmail] = useState<string>("");
-    const [password,setPassword] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+
+   const dispatch = useDispatch();
 
     const handleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
         if(event.target.name === "email"){
@@ -22,6 +26,8 @@ export const Login: React.FC = () => {
             email,
             password
         });
+
+        
     }
     return(
         <div className="login">
