@@ -22,6 +22,7 @@ public class User {
 
     private List<Reimburse> history = new ArrayList<>();
 
+
     private List<User> registry = new ArrayList<>();
 
     public User() {

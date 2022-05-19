@@ -1,0 +1,20 @@
+:root {
+    --bg: #2D2E2E;
+    --dark: #0F0F0F;
+    --btn-blue: #3891A6;
+    --accent: #23CE6B;
+    --text-white: #FBFBFB;
+  }
+
+  .navbar {
+    background: var(--accent);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}

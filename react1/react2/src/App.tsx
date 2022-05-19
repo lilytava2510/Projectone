@@ -1,12 +1,18 @@
 import React from 'react';
-import "./App.css";
+import './App.css';
+
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import {LoginPage} from './Views/LoginPage/LoginPage';
+import { FeedPage } from './Views/FeedPage/FeedPage';
 
 function App() {
   return (
-    <>
-      <LoginPage />
-    </>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/login" element={<LoginPage />}/>
+      <Route path="/feed"  element={<FeedPage/>}/>
+      </Routes>
+          </BrowserRouter>
   );
 }
 

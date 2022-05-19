@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import "./LoginForm.css";
 import { useDispatch } from 'react-redux';
-import { toggleError } from '../../Slices/UserSlice';
+import { loginUser,toggleError } from '../../Slices/UserSlice';
+import { AppDispatch } from '../../Store';
 
 
 export const Login: React.FC = () => {
@@ -9,7 +10,7 @@ export const Login: React.FC = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
-   const dispatch = useDispatch();
+   const dispatch: AppDispatch = useDispatch();
 
     const handleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
         if(event.target.name === "email"){
@@ -22,11 +23,14 @@ export const Login: React.FC = () => {
 
     
     const handleLogin = (event:React.MouseEvent<HTMLButtonElement>) => {
-        console.log("Login user: ", {
+        let credentials = {
             email,
             password
-        });
 
+        };
+
+      dispatch(loginUser(credentials));
+        
         
     }
     return(

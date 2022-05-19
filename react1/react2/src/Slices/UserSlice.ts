@@ -6,6 +6,7 @@ interface UserSliceState {
     loading: boolean,
     error: boolean,
     user?: IUser
+    currentProfile?: IUser
 }
 
 
@@ -20,11 +21,12 @@ type Login = {
 
 export const loginUser = createAsyncThunk(
     'user/login',
-    async(user:Login, thunkAPI) => {
+    async(credentials:Login, thunkAPI) => {
          try{
-              const res = await axios.post('http://localhost:8080/users/login',user);
+              const res = await axios.post('http://localhost:8080/users/login',credentials);
         
-        return  { userId: res.data.userId,
+        return  {
+                  userId: res.data.userId,
                   firstName: res.data.firstName,
                   lastName: res.data.lastName,
                   username: res.data.username,
@@ -33,7 +35,7 @@ export const loginUser = createAsyncThunk(
                   privilege: res.data.privilege
         }
 
-        } catch(error){
+        } catch(e){
             return thunkAPI.rejectWithValue('Wrong login try again');
         }
     }
@@ -56,8 +58,15 @@ export const UserSlice = createSlice({
             state.error = false;
             state.loading = false;
                 });
+
+        builder.addCase(loginUser.rejected, (state, action) => {
+             state.error = true;
+             state.loading = false;
+                });
+                
     }
 })
+
    export const {toggleError} = UserSlice.actions;
 
 export default UserSlice.reducer;

@@ -113,7 +113,7 @@ public class UserDaoJDBC {
 
     public User login(String users, String password){
         Connection c = cs.getConnection();
-        String sql = "select * from users where username = ? and password = ?";
+        String sql = "select * from users where email = ? and password = ?";
         User user = new User();
         try{
             PreparedStatement p = c.prepareStatement(sql);

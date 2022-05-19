@@ -27,9 +27,11 @@ public static void main(String[] args ) {
    // us.registerUser("charly", "charles", "tt", "@gmail", "passwprd");
     Javalin server = Javalin.create(config ->
     {
+
         config.enableCorsForAllOrigins();
     });
-
+    server.before(ctx -> ctx.header("Access-Control-Allow-Credentials", "true"));
+    server.before(ctx -> ctx.header("Access-Control_Expose-Headers","*"));
 
     server.routes(()-> {
         path("users", () -> {

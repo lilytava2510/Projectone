@@ -34,17 +34,17 @@ public class UserController {
         ObjectMapper mapper = new ObjectMapper();
         LoginObject lo = mapper.readValue(ctx.body(), LoginObject.class);
         User u = us.loginUser( lo.email, lo.password);
-//        if(u == null){
-//            ctx.status(403);
-//            ctx.result("Username or password was incorrect");
-//        } else {
+        if(u == null){
+            ctx.status(403);
+            ctx.result("Username or password was incorrect");
+        } else {
         ctx.req.getSession().setAttribute("loggedIn", u.getEmail());
         ctx.req.getSession().setAttribute("id", "" + u.getUserId());
         ctx.result(om.writeValueAsString(u));
 
 
-        ctx.result("logged");
-        //  }
+//        ctx.result("logged");2
+         }
     };
 
     public Handler handleUpdateUser = (ctx) -> {
