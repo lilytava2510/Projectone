@@ -9,10 +9,16 @@ export const ReimPage: React.FC = () => {
 
     const userInfo = useSelector((state:RootState) => state.user);
     const navigator = useNavigate();
-      
+      useEffect(() => {
+          if(!userInfo.user){
+            navigator("/feed");
+
+          }
+      },[userInfo]);
+
       const checkForContent:any = () => {
 
-        if(userInfo.user.)
+        if(userInfo.user?.Reim)
 
         return (
             <Loading />

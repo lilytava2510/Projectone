@@ -3,6 +3,8 @@ import {Navbar } from '../../Components/Navbar/Navbar';
 import { useSelector } from 'react-redux';
 import { RootState }  from '../../Store';
 import {useNavigate} from 'react-router-dom';
+import { Loading } from '../../Components/Loading/Loading';
+import { Reim } from '../../Components/Reim/Reim';
 export const FeedPage: React.FC = () => {
 
     const userInfo = useSelector((state:RootState) => state.user);
@@ -13,6 +15,16 @@ export const FeedPage: React.FC = () => {
 
           }
       },[userInfo]);
+
+      const checkForContent:any = () => {
+
+        if(userInfo.)
+
+        return (
+            <Loading />
+        )
+
+      }
     
     return(
         <>
@@ -20,6 +32,7 @@ export const FeedPage: React.FC = () => {
            <h1> Welcome: {userInfo.user?.firstName}</h1>
            <h2> FeedPage</h2>
 
+           
         </>
     )
 

@@ -9,5 +9,5 @@ export interface IUser {
     email:string,
     password:string,
     privilege?: boolean
-    
+    Reim?: IReim[];
 }

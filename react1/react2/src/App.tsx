@@ -5,6 +5,7 @@ import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import {LoginPage} from './Views/LoginPage/LoginPage';
 import { FeedPage } from './Views/FeedPage/FeedPage';
 import {InfoPage} from './Views/InfoPage/InfoPage';
+import {ReimPage} from './Views/ReimPage/ReimPage'; 
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/login" element={<LoginPage />}/>
       <Route path="/feed"  element={<FeedPage/>}/>
       <Route path="/user/:id" element={<InfoPage/>}/>
+      <Route path="/reim" element={<ReimPage/>}/>
       </Routes>
           </BrowserRouter>
   );
