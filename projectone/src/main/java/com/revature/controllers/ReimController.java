@@ -21,6 +21,7 @@ public class ReimController {
     }
 
     public Handler handleCreateReim = (ctx) -> {
+
 //        if (ctx.req.getSession().getAttribute("id") == null) {
 //            ctx.status(401);
 //            ctx.result("You must log in to request a reimbursement");
@@ -34,15 +35,17 @@ public class ReimController {
 
     };
     public Handler handleViewTickets = (ctx) -> {
-//        if (ctx.req.getSession().getAttribute("id") == null) {
-//            ctx.status(401);
-//            ctx.result("Please log in to view tickets.");
-//        } else {
-        // int reimburserId = Integer.parseInt((String) ctx.req.getSession().getAttribute("id"));
-        RegisterObject ro = om.readValue(ctx.body(), RegisterObject.class);
+        ctx.header("Access-Control-Expose-Headers","*");
+        if (ctx.req.getSession().getAttribute("id") == null) {
+            ctx.status(401);
+            ctx.result("Please log in to view tickets.");
+        } else {
+        int reimburserId = Integer.parseInt((String) ctx.req.getSession().getAttribute("id"));
+       // RegisterObject ro = om.readValue(ctx.body(), RegisterObject.class);
 
-        ctx.result(om.writeValueAsString(rs.ReadReimburse(ro.id)));
-        // }
+        ctx.result(om.writeValueAsString(rs.ReadReimburse(reimburserId)));
+         }
+        System.out.println("print");
 
     };
     public Handler handleUpdateReim = (ctx) -> {

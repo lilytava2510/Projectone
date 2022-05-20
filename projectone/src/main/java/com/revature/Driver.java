@@ -46,7 +46,7 @@ public static void main(String[] args ) {
         });
         path("reimburse", ()-> {
             post("/create",rc.handleCreateReim);
-            get("/own_ledger",rc.handleViewTickets);
+            get("/get",rc.handleViewTickets);
             put("/edit",rc.handleUpdateReim);
             get("/own_approve",rc.handleUserApprove);
             get("/own_pend",rc.handleUserPend);

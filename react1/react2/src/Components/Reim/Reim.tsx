@@ -14,6 +14,7 @@ export const Reim:React.FC<IReim> = (post:IReim) => {
             </div>
 <div className="reim-ticket" >
     <p>{post.amount} </p>
+
 </div>
         </div>
     )

@@ -32,7 +32,8 @@ export const loginUser = createAsyncThunk(
                   username: res.data.username,
                   email: res.data.email,
                   password: res.data.password,
-                  privilege: res.data.privilege
+                  privilege: res.data.privilege,
+                  Reim: res.data.Reim
         }
 
         } catch(e){
