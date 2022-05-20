@@ -66,4 +66,18 @@ public class UserController {
         ctx.result(om.writeValueAsString(us.readAllEmployee()));
     };
 
+    public Handler handleGetUserInfo = (ctx) ->{
+        if (ctx.req.getSession().getAttribute("id") == null) {
+            ctx.status(409);
+            ctx.result("You must log in to view user");
+        } else {
+            int id = Integer.parseInt((String) ctx.req.getSession().getAttribute("id"));
+            ctx.result(om.writeValueAsString(us.getUserInfo(id)));
+        }
+    };
+
+    public Handler handleLogout = (ctx) -> {
+        ctx.req.getSession().invalidate();
+        ctx.result("User logged out");
+    };
 }

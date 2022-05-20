@@ -65,5 +65,10 @@ public class UserService {
     public List<User> readAllEmployee(){
         return ud.readAllEmployees();
     }
+    public User getUserInfo(int id){
+        return ud.getUserById(id);
+    }
+
+
 
 }

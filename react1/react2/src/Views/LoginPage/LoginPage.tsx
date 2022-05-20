@@ -9,18 +9,18 @@ import "./LoginPage.css";
 
 export const LoginPage: React.FC = () => {
 
-    const userState = useSelector ((state:RootState) => state.user);
+    const userState = useSelector ((state :RootState) => state.user);
 
     const navigator = useNavigate();
      useEffect(()=> {
           if(!userState.error && userState.user){
-              navigator('/feed');
+              navigator('/feed')
           }
      }, [userState]);
 
     return(
         <div className="login-page">
-            {userState.error ? <h2 className="login-error">Username or password incorrect</h2> : <></>}
+            {userState.error ? <h2 className="login-error" >Username or password incorrect</h2> : <></>}
           <Login />
         </div>
     )

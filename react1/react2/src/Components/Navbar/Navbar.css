@@ -5,6 +5,25 @@
     --accent: #23CE6B;
     --text-white: #FBFBFB;
   }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 20px;
+  }
+  .nav-menu {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        grid-gap: 10px;
+        list-style: none;
+        text-align: center;
+        width: 80%;
+        justify-content: end;
+        margin-right: 2rem;
+  }
+    
 
   .navbar {
     background: var(--accent);
@@ -17,4 +36,34 @@
     top: 0;
     width: 100%;
     z-index: 1;
+}
+
+.logout-btn{
+    background-color: var(--btn-blue);
+    border: solid 2px var(--dark);
+    color: var(--dark);
+    font-weight: bold;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    outline: none;
+}
+
+.nav-link {
+    color: var(--dark);
+    font-size: 1.5rem;
+    text-decoration: none;
+    cursor: pointer;
 }

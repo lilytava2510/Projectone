@@ -40,6 +40,9 @@ public static void main(String[] args ) {
             put("/update", uc.handleUpdateUser);
             delete("/id", uc.handleDeleteUser);
             get("/registry", uc.handleAllEmployee);
+            get("/logout", uc.handleLogout);
+            get("/info/", uc.handleGetUserInfo);
+
         });
         path("reimburse", ()-> {
             post("/create",rc.handleCreateReim);

@@ -132,6 +132,9 @@ public class UserDaoJDBC {
                 }else{user.setPrivilege(false);}
             }
         }catch(SQLException e){e.printStackTrace();}
+        if(user.getUsername() == null){
+            user = null;
+        }
         return user;
     }
 
