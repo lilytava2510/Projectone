@@ -34,6 +34,8 @@ export const Reim:React.FC<IReim> = (ticket:IReim) => {
                 dispatch(editReim(note));
             }
         
+
+            console.log(user.user?.privilege)
     
     return(
             <tr>
@@ -56,6 +58,8 @@ export const Reim:React.FC<IReim> = (ticket:IReim) => {
                 : <></> }
             </tr>
 
+    ) 
+}
         /*
         <div className="reim" >
             <div className="reim-profile">
@@ -65,5 +69,3 @@ export const Reim:React.FC<IReim> = (ticket:IReim) => {
 </div>
         </div>
         */
-    )
-}

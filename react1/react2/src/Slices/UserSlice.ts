@@ -1,6 +1,7 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import {IUser} from "../Interface/IUser";
 import axios from "axios";
+import { userInfo } from "os";
 
 interface UserSliceState {
     loading: boolean,
@@ -34,7 +35,7 @@ export const loginUser = createAsyncThunk(
     async(credentials:Login, thunkAPI) => {
          try{
               const res = await axios.post('http://localhost:8080/users/login',credentials);
-        
+              console.log(res.data);
         return  {
                   userId: res.data.userId,
                   firstName: res.data.firstName,
@@ -98,6 +99,7 @@ export const UserSlice = createSlice({
             state.user = action.payload;
             state.error = false;
             state.loading = false;
+            console.log(state.user.privilege);
                 });
 
         builder.addCase(loginUser.rejected, (state, action) => {

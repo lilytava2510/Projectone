@@ -25,7 +25,7 @@ export const FeedPage: React.FC = () => {
 
         }
     },[userInfo.user, reimState.reimburse]);
-    
+    console.log(userInfo.user?.privilege)
     return(
         <>
            <Navbar />
