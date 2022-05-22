@@ -1,7 +1,9 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from 'react-router-dom';
-import {RootState} from'../../Store';
+import {RootState, AppDispatch} from "../../Store";
+import { clearReim } from '../../Slices/ReimSlice';
+import { clearUser } from '../../Slices/UserSlice';
 //import defaultImage from '../../defaultpic.jpg';
 
 import './Navbar.css';
@@ -9,21 +11,23 @@ import './Navbar.css';
 
 export const Navbar: React.FC = () => {
 
-     const handleLogout = () => {
+    const dispatch:AppDispatch = useDispatch();
 
+    const handleLogout = () => {
+         dispatch(clearReim());
+         dispatch(clearUser());
      }
-
      const user = useSelector((state:RootState) => state.user.user);
 
     return( 
         <nav className="navbar">
        
-            <ul className="nav-menu">
+            <ul>
                 <li className="nav-item">
-                    <Link to= {"/feed"} className="nav-link">Home</Link>
+                    <Link to= {"/feed"} className="nav-link">Profile</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to= {`/user/${user?.userId}`} className="nav-link">User info/updateinfo</Link>
+                    <Link to= {"/feed"} className="nav-link">Home</Link>
                 </li>
                 <li className="logout">
                     <Link to={"/login"}>

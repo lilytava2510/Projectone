@@ -168,7 +168,6 @@ public class UserDaoJDBC {
 
 
 
-
 //    public void createUser(User user){
 //        Connection c = cs.getConnection();
 //        String sql = "call create_user(?,?,?,?,?,?)";

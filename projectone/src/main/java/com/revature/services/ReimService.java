@@ -20,12 +20,12 @@ public class ReimService {
 
         Date d = new Date(Instant.now().toEpochMilli());
 
-        Reimburse r = new Reimburse( amount, d, description, author, 1, type);
+        Reimburse r = new Reimburse(amount, d, description, author, 1, type);
         rd.createTicket(r);
     }
 
 
-    public List<Reimburse> ReadReimburse(int id) {
+    public List<Reimburse> readReimburse(int id) {
         return rd.getById(id);
     }
 
@@ -55,10 +55,11 @@ public class ReimService {
 
     }
 
-    public List<Reimburse> getAllPend(){
+    public List<Reimburse> getAllPend() {
         return rd.getAllPending();
     }
-}//package com.revature.services;
+}
+    //package com.revature.services;
 //
 //
 //import java.sql.Date;

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import {Navbar } from '../../Components/Navbar/Navbar';
-import { useSelector } from 'react-redux';
-import { RootState }  from '../../Store';
-import {useNavigate} from 'react-router-dom';
-import { Loading } from '../../Components/Loading/Loading';
-import { Reim } from '../../Components/Reim/Reim';
-import { IReim } from '../../Interface/IReim';
+import React, {useEffect} from "react";
+import {Navbar} from "../../Components/Navbar/Navbar";
+import { useSelector} from "react-redux";
+import { RootState } from "../../Store";
+import { useNavigate } from "react-router-dom";
+import { Loading } from "../../Components/Loading/Loading";
+import { Reim } from "../../Components/Reim/Reim";
+import { IReim } from "../../Interface/IReim";
+
 export const ReimPage: React.FC = () => {
 
     const userInfo = useSelector((state:RootState) => state.user);
@@ -19,18 +20,17 @@ export const ReimPage: React.FC = () => {
       },[userInfo,Reim]);
         
       const checkForContent:any = () => {
-
+        /*
         if(userInfo.user?.Reim){
             userInfo.user.Reim.map((post:IReim)=> {
                 return <Reim {...post} />
             });
         } else {
-
         return (
             <Loading />
         )
-
-      }
+          */
+      
       }
     return(
         <>

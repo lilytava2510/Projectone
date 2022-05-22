@@ -19,6 +19,16 @@ type Login = {
     password:string
 }
 
+type Paper = {
+    userId: number,
+    firstName: string,
+    lastName: string,
+    username: string,
+    email: string,
+    password: string,
+   // privilege: boolean
+}
+
 export const loginUser = createAsyncThunk(
     'user/login',
     async(credentials:Login, thunkAPI) => {
@@ -32,8 +42,7 @@ export const loginUser = createAsyncThunk(
                   username: res.data.username,
                   email: res.data.email,
                   password: res.data.password,
-                  privilege: res.data.privilege,
-                  Reim: res.data.Reim
+                  privilege: res.data.privilege
         }
 
         } catch(e){
@@ -42,6 +51,33 @@ export const loginUser = createAsyncThunk(
     }
 )
 
+export const getUser = createAsyncThunk(
+    "user/info",
+    async (userId:number, thunkAPI) => {
+        try{
+              axios.defaults.withCredentials = true;
+            const res = await axios.get(`http://localhost:8080/users/info${userId}`);
+  
+            return res.data;
+        } catch (e){
+            console.log(e);
+        }
+    }  
+  );
+
+  export const updateUser = createAsyncThunk(
+    "user/update",
+    async (credentials:Paper, thunkAPI) => {
+        try{
+              axios.defaults.withCredentials = true;
+            const res = await axios.put(`http://localhost:8080/users/update`,credentials);
+  
+            return res.data;
+        } catch (e){
+            console.log(e);
+        }
+    }  
+  );
 
 export const UserSlice = createSlice({
     name: "user", 
@@ -49,6 +85,9 @@ export const UserSlice = createSlice({
     reducers: {
         toggleError : (state) => {
             state.error = !state.error;
+        },
+        clearUser: (state) => {
+            state.user = undefined
         }
     }, 
     extraReducers: (builder) => {
@@ -65,10 +104,22 @@ export const UserSlice = createSlice({
              state.error = true;
              state.loading = false;
                 });
-      
+        builder.addCase(updateUser.pending, (state, action) => {
+            state.loading = true;
+        });
+        builder.addCase(updateUser.fulfilled, (state, action) => {
+            state.user = action.payload;
+            state.error = false;
+            state.loading = false;
+                });
+
+        builder.addCase(updateUser.rejected, (state, action) => {
+                state.error = true;
+                state.loading = false;
+                });
     }
 })
 
-   export const {toggleError} = UserSlice.actions;
+   export const {toggleError, clearUser} = UserSlice.actions;
 
 export default UserSlice.reducer;
